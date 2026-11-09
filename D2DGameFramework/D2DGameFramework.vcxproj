@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{b1944568-c05e-411e-8d62-64d95d099c38}</ProjectGuid>
+    <RootNamespace>D2DGameFramework</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\ThirdParty\FFmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\FFmpeg\bin\x86;..\ThirdParty\FreeImage\bin\x86;..\ThirdParty\bassSDK\bin\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\ThirdParty\FFmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\FFmpeg\bin\x86;..\ThirdParty\FreeImage\bin\x86;..\ThirdParty\bassSDK\bin\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\ThirdParty\FFmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\FFmpeg\bin\x64;..\ThirdParty\FreeImage\bin\x64;..\ThirdParty\bassSDK\bin\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\ThirdParty\FFmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\ThirdParty\FFmpeg\bin\x64;..\ThirdParty\FreeImage\bin\x64;..\ThirdParty\bassSDK\bin\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="AnchorTool.h" />
+    <ClInclude Include="Arrow.h" />
+    <ClInclude Include="AttackCollider.h" />
+    <ClInclude Include="AttackEffect.h" />
+    <ClInclude Include="Axe.h" />
+    <ClInclude Include="AxeBulletE.h" />
+    <ClInclude Include="AxeBulletP.h" />
+    <ClInclude Include="AxePart.h" />
+    <ClInclude Include="AxeStates.h" />
+    <ClInclude Include="Axe_Alert.h" />
+    <ClInclude Include="Axe_Attack.h" />
+    <ClInclude Include="Axe_Chase.h" />
+    <ClInclude Include="Axe_Dead.h" />
+    <ClInclude Include="Axe_Idle.h" />
+    <ClInclude Include="Axe_Patrol.h" />
+    <ClInclude Include="BackPack.h" />
+    <ClInclude Include="BloodParticle.h" />
+    <ClInclude Include="BossHP.h" />
+    <ClInclude Include="D2DCore\D2DRender.h" />
+    <ClInclude Include="D2DCore\FontRenderer.h" />
+    <ClInclude Include="D2DCore\Sprite.h" />
+    <ClInclude Include="D2DCore\Texture.h" />
+    <ClInclude Include="D2DCore\TextureManager.h" />
+    <ClInclude Include="EdgePlatform.h" />
+    <ClInclude Include="EffectsPool.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EquipMenu.h" />
+    <ClInclude Include="Fly_Sword.h" />
+    <ClInclude Include="GameCore\Application.h" />
+    <ClInclude Include="GameCore\AudioLib.h" />
+    <ClInclude Include="GameCore\GameLoop.h" />
+    <ClInclude Include="GameCore\InputMgr.h" />
+    <ClInclude Include="GameCore\Scene.h" />
+    <ClInclude Include="GameCore\SceneManager.h" />
+    <ClInclude Include="GamePlay\AfterImageGhost.h" />
+    <ClInclude Include="GamePlay\AfterImageTrail.h" />
+    <ClInclude Include="GamePlay\ChildObject.h" />
+    <ClInclude Include="GamePlay\HitFlash.h" />
+    <ClInclude Include="GameTool.h" />
+    <ClInclude Include="GamePlay\Animator.h" />
+    <ClInclude Include="GamePlay\AudioSource.h" />
+    <ClInclude Include="GamePlay\Collider2d.h" />
+    <ClInclude Include="GamePlay\Camera2d.h" />
+    <ClInclude Include="GamePlay\CollisionMatrix.h" />
+    <ClInclude Include="GamePlay\Component.h" />
+    <ClInclude Include="GamePlay\Debug.h" />
+    <ClInclude Include="GamePlay\FiniteStateMachine.h" />
+    <ClInclude Include="GamePlay\GameLayer.h" />
+    <ClInclude Include="GamePlay\GameObject.h" />
+    <ClInclude Include="GamePlay\SpriteRender.h" />
+    <ClInclude Include="GamePlay\Transform2d.h" />
+    <ClInclude Include="GamePlay\VideoPlayer.h" />
+    <ClInclude Include="GameUI\FloatingNumberPool.h" />
+    <ClInclude Include="GameUI\ResourceBar.h" />
+    <ClInclude Include="GameUI\IMenu.h" />
+    <ClInclude Include="GameUI\MenuStack.h" />
+    <ClInclude Include="GameUI\UIAnimator.h" />
+    <ClInclude Include="GameUI\UIText.h" />
+    <ClInclude Include="GameUI\UITextArea.h" />
+    <ClInclude Include="HelpTool\EnCoding.h" />
+    <ClInclude Include="HelpTool\INIConfig.h" />
+    <ClInclude Include="HelpTool\MyConsole.h" />
+    <ClInclude Include="HelpTool\RandomMaker.h" />
+    <ClInclude Include="HelpTool\SingletonTemplate.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemConfig.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Option.h" />
+    <ClInclude Include="PauseMenu.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerState.h" />
+    <ClInclude Include="ResHeader.h" />
+    <ClInclude Include="S0.h" />
+    <ClInclude Include="S1.h" />
+    <ClInclude Include="S2.h" />
+    <ClInclude Include="S3.h" />
+    <ClInclude Include="S4.h" />
+    <ClInclude Include="S5.h" />
+    <ClInclude Include="S6.h" />
+    <ClInclude Include="SelectDataScene.h" />
+    <ClInclude Include="Slop.h" />
+    <ClInclude Include="Soma.h" />
+    <ClInclude Include="Soma_Dead.h" />
+    <ClInclude Include="Attributes.h" />
+    <ClInclude Include="Bat.h" />
+    <ClInclude Include="BatStates.h" />
+    <ClInclude Include="Bat_Idle.h" />
+    <ClInclude Include="Bat_Walk.h" />
+    <ClInclude Include="Bat_Dead.h" />
+    <ClInclude Include="Fly.h" />
+    <ClInclude Include="FlyStates.h" />
+    <ClInclude Include="Fly_Idle.h" />
+    <ClInclude Include="Fly_Attack.h" />
+    <ClInclude Include="Fly_Dead.h" />
+    <ClInclude Include="SomaStates.h" />
+    <ClInclude Include="Soma_Attack_Air.h" />
+    <ClInclude Include="Soma_Attack_Crouch.h" />
+    <ClInclude Include="Soma_Attack_Stand.h" />
+    <ClInclude Include="Soma_BlackPanther.h" />
+    <ClInclude Include="Soma_Crouch.h" />
+    <ClInclude Include="Soma_Dash_Back.h" />
+    <ClInclude Include="Soma_Fall.h" />
+    <ClInclude Include="Soma_Great_Sword_Attack_Air.h" />
+    <ClInclude Include="Soma_Great_Sword_Attack_Crouch.h" />
+    <ClInclude Include="Soma_Great_Sword_Attack_Stand.h" />
+    <ClInclude Include="Soma_Great_Sword_Supper_Attack.h" />
+    <ClInclude Include="Soma_Hit_Air.h" />
+    <ClInclude Include="Soma_Hit_Stand.h" />
+    <ClInclude Include="Soma_Idle.h" />
+    <ClInclude Include="Soma_Jump.h" />
+    <ClInclude Include="Soma_Land.h" />
+    <ClInclude Include="Soma_Punch_Air.h" />
+    <ClInclude Include="Soma_Punch_Crouch.h" />
+    <ClInclude Include="Soma_Punch_Stand.h" />
+    <ClInclude Include="Soma_Skill_Air.h" />
+    <ClInclude Include="Soma_Skill_Ground.h" />
+    <ClInclude Include="Soma_Slide_Flat.h" />
+    <ClInclude Include="Soma_Walk.h" />
+    <ClInclude Include="SoulState.h" />
+    <ClInclude Include="SoundConfigScene.h" />
+    <ClInclude Include="SoulSkill.h" />
+    <ClInclude Include="StartScene.h" />
+    <ClInclude Include="SwordStates.h" />
+    <ClInclude Include="Sword_Aim.h" />
+    <ClInclude Include="Sword_Attack.h" />
+    <ClInclude Include="Sword_Attack2.h" />
+    <ClInclude Include="Sword_Idle.h" />
+    <ClInclude Include="Sword_WithDraw.h" />
+    <ClInclude Include="S_Bat.h" />
+    <ClInclude Include="S_BlackPather.h" />
+    <ClInclude Include="S_Fly.h" />
+    <ClInclude Include="TopScene.h" />
+    <ClInclude Include="TypeDefine\Color.h" />
+    <ClInclude Include="TypeDefine\Geometric.h" />
+    <ClInclude Include="TypeDefine\Matrix3x3.h" />
+    <ClInclude Include="TypeDefine\Universal.h" />
+    <ClInclude Include="TypeDefine\Vector2.h" />
+    <ClInclude Include="TypeDefine\Vector3.h" />
+    <ClInclude Include="Zombi.h" />
+    <ClInclude Include="ZombiStates.h" />
+    <ClInclude Include="Zombi_Alert.h" />
+    <ClInclude Include="Zombi_Chase.h" />
+    <ClInclude Include="Zombi_Dead.h" />
+    <ClInclude Include="ZombiPart.h" />
+    <ClInclude Include="Zombi_Idle.h" />
+    <ClInclude Include="Zombi_Patrol.h" />
+    <ClInclude Include="GameUI\UIElement.h" />
+    <ClInclude Include="GameUI\UICanvas.h" />
+    <ClInclude Include="GameUI\UIButton.h" />
+    <ClInclude Include="GameUI\UICheckBox.h" />
+    <ClInclude Include="GameUI\UIImage.h" />
+    <ClInclude Include="GameUI\UINumber.h" />
+    <ClInclude Include="GameUI\UIFloatingNumber.h" />
+    <ClInclude Include="GameUI\UISliderBar.h" />
+    <ClInclude Include="GameUI\UIWindow.h" />
+    <ClInclude Include="GameUI\UIScrollView.h" />
+    <ClInclude Include="BreakableObject.h" />
+    <ClInclude Include="BufferBlock.h" />
+    <ClInclude Include="ColliderManager.h" />
+    <ClInclude Include="Drop.h" />
+    <ClInclude Include="Effect_SuperAttack.h" />
+    <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="HelpTool\Timer.h" />
+    <ClInclude Include="Rock.h" />
+    <ClInclude Include="S_Axe.h" />
+    <ClInclude Include="SaveManager.h" />
+    <ClInclude Include="Soma_AxeBullet_Air.h" />
+    <ClInclude Include="Soma_AxeBullet_Ground.h" />
+    <ClInclude Include="Soma_DoubleJump.h" />
+    <ClInclude Include="Soma_Strike_Air.h" />
+    <ClInclude Include="Soma_Sword_Supper_Attack.h" />
+    <ClInclude Include="Sword_Attack3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="AttackCollider.cpp" />
+    <ClCompile Include="AttackEffect.cpp" />
+    <ClCompile Include="Axe.cpp" />
+    <ClCompile Include="AxeBulletE.cpp" />
+    <ClCompile Include="AxeBulletP.cpp" />
+    <ClCompile Include="AxePart.cpp" />
+    <ClCompile Include="AxeStates.cpp" />
+    <ClCompile Include="Axe_Alert.cpp" />
+    <ClCompile Include="Axe_Attack.cpp" />
+    <ClCompile Include="Axe_Chase.cpp" />
+    <ClCompile Include="Axe_Dead.cpp" />
+    <ClCompile Include="Axe_Idle.cpp" />
+    <ClCompile Include="Axe_Patrol.cpp" />
+    <ClCompile Include="BackPack.cpp" />
+    <ClCompile Include="BloodParticle.cpp" />
+    <ClCompile Include="BossHP.cpp" />
+    <ClCompile Include="EdgePlatform.cpp" />
+    <ClCompile Include="EffectsPool.cpp" />
+    <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="BatStates.cpp" />
+    <ClCompile Include="Bat_Idle.cpp" />
+    <ClCompile Include="Bat_Walk.cpp" />
+    <ClCompile Include="Bat_Dead.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EquipMenu.cpp" />
+    <ClCompile Include="Fly.cpp" />
+    <ClCompile Include="FlyStates.cpp" />
+    <ClCompile Include="Fly_Idle.cpp" />
+    <ClCompile Include="Fly_Attack.cpp" />
+    <ClCompile Include="Fly_Dead.cpp" />
+    <ClCompile Include="Fly_Sword.cpp" />
+    <ClCompile Include="GamePlay\AfterImageGhost.cpp" />
+    <ClCompile Include="GamePlay\AfterImageTrail.cpp" />
+    <ClCompile Include="GamePlay\HitFlash.cpp" />
+    <ClCompile Include="GameUI\FloatingNumberPool.cpp" />
+    <ClCompile Include="GameUI\MenuStack.cpp" />
+    <ClCompile Include="GameUI\UIAnimator.cpp" />
+    <ClCompile Include="GameUI\UIFloatingNumber.cpp" />
+    <ClCompile Include="GameUI\UIText.cpp" />
+    <ClCompile Include="GameUI\UITextArea.cpp" />
+    <ClCompile Include="ItemConfig.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="D2DCore\D2DRender.cpp" />
+    <ClCompile Include="D2DCore\FontRenderer.cpp" />
+    <ClCompile Include="D2DCore\Sprite.cpp" />
+    <ClCompile Include="D2DCore\Texture.cpp" />
+    <ClCompile Include="D2DCore\TextureManager.cpp" />
+    <ClCompile Include="GameCore\Application.cpp" />
+    <ClCompile Include="GameCore\AudioLib.cpp" />
+    <ClCompile Include="GameCore\GameLoop.cpp" />
+    <ClCompile Include="GameCore\InputMgr.cpp" />
+    <ClCompile Include="GameCore\Scene.cpp" />
+    <ClCompile Include="GameCore\SceneManager.cpp" />
+    <ClCompile Include="GameTool.cpp" />
+    <ClCompile Include="GamePlay\Animator.cpp" />
+    <ClCompile Include="GamePlay\AudioSource.cpp" />
+    <ClCompile Include="GamePlay\Camera2d.cpp" />
+    <ClCompile Include="GamePlay\Collider2d.cpp" />
+    <ClCompile Include="GamePlay\Component.cpp" />
+    <ClCompile Include="GamePlay\Debug.cpp" />
+    <ClCompile Include="GamePlay\FiniteStateMachine.cpp" />
+    <ClCompile Include="GamePlay\GameObject.cpp" />
+    <ClCompile Include="GamePlay\SpriteRender.cpp" />
+    <ClCompile Include="GamePlay\Transform2d.cpp" />
+    <ClCompile Include="GamePlay\VideoPlayer.cpp" />
+    <ClCompile Include="HelpTool\INIConfig.cpp" />
+    <ClCompile Include="HelpTool\MyConsole.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
+    <ClCompile Include="S0.cpp" />
+    <ClCompile Include="S1.cpp" />
+    <ClCompile Include="S2.cpp" />
+    <ClCompile Include="S3.cpp" />
+    <ClCompile Include="S4.cpp" />
+    <ClCompile Include="S5.cpp" />
+    <ClCompile Include="S6.cpp" />
+    <ClCompile Include="SelectDataScene.cpp" />
+    <ClCompile Include="Slop.cpp" />
+    <ClCompile Include="Soma.cpp" />
+    <ClCompile Include="Soma_Dead.cpp" />
+    <ClCompile Include="SomaStates.cpp" />
+    <ClCompile Include="Soma_Attack_Air.cpp" />
+    <ClCompile Include="Soma_Attack_Crouch.cpp" />
+    <ClCompile Include="Soma_Attack_Stand.cpp" />
+    <ClCompile Include="Soma_BlackPanther.cpp" />
+    <ClCompile Include="Soma_Crouch.cpp" />
+    <ClCompile Include="Soma_Dash_Back.cpp" />
+    <ClCompile Include="Soma_Fall.cpp" />
+    <ClCompile Include="Soma_Great_Sword_Attack_Air.cpp" />
+    <ClCompile Include="Soma_Great_Sword_Attack_Crouch.cpp" />
+    <ClCompile Include="Soma_Great_Sword_Attack_Stand.cpp" />
+    <ClCompile Include="Soma_Great_Sword_Supper_Attack.cpp" />
+    <ClCompile Include="Soma_Hit_Air.cpp" />
+    <ClCompile Include="Soma_Hit_Stand.cpp" />
+    <ClCompile Include="Soma_Idle.cpp" />
+    <ClCompile Include="Soma_Jump.cpp" />
+    <ClCompile Include="Soma_Land.cpp" />
+    <ClCompile Include="Soma_Punch_Air.cpp" />
+    <ClCompile Include="Soma_Punch_Crouch.cpp" />
+    <ClCompile Include="Soma_Punch_Stand.cpp" />
+    <ClCompile Include="Soma_Slide_Flat.cpp" />
+    <ClCompile Include="Soma_Skill_Air.cpp" />
+    <ClCompile Include="Soma_Skill_Ground.cpp" />
+    <ClCompile Include="Soma_Walk.cpp" />
+    <ClCompile Include="SoulSkill.cpp" />
+    <ClCompile Include="SoundConfigScene.cpp" />
+    <ClCompile Include="StartScene.cpp" />
+    <ClCompile Include="SwordStates.cpp" />
+    <ClCompile Include="Sword_Aim.cpp" />
+    <ClCompile Include="Sword_Attack.cpp" />
+    <ClCompile Include="Sword_Attack2.cpp" />
+    <ClCompile Include="Sword_Idle.cpp" />
+    <ClCompile Include="Sword_WithDraw.cpp" />
+    <ClCompile Include="S_Bat.cpp" />
+    <ClCompile Include="S_BlackPather.cpp" />
+    <ClCompile Include="S_Fly.cpp" />
+    <ClCompile Include="TopScene.cpp" />
+    <ClCompile Include="Zombi.cpp" />
+    <ClCompile Include="ZombiStates.cpp" />
+    <ClCompile Include="Zombi_Alert.cpp" />
+    <ClCompile Include="Zombi_Chase.cpp" />
+    <ClCompile Include="Zombi_Dead.cpp" />
+    <ClCompile Include="ZombiPart.cpp" />
+    <ClCompile Include="Zombi_Idle.cpp" />
+    <ClCompile Include="Zombi_Patrol.cpp" />
+    <ClCompile Include="GameUI\UIElement.cpp" />
+    <ClCompile Include="GameUI\UICanvas.cpp" />
+    <ClCompile Include="GameUI\UIButton.cpp" />
+    <ClCompile Include="GameUI\UICheckBox.cpp" />
+    <ClCompile Include="GameUI\UIImage.cpp" />
+    <ClCompile Include="GameUI\UINumber.cpp" />
+    <ClCompile Include="GameUI\UISliderBar.cpp" />
+    <ClCompile Include="GameUI\UIWindow.cpp" />
+    <ClCompile Include="GameUI\UIScrollView.cpp" />
+    <ClCompile Include="BreakableObject.cpp" />
+    <ClCompile Include="BufferBlock.cpp" />
+    <ClCompile Include="Drop.cpp" />
+    <ClCompile Include="Effect_SuperAttack.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="HelpTool\Timer.cpp" />
+    <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="S_Axe.cpp" />
+    <ClCompile Include="SaveManager.cpp" />
+    <ClCompile Include="Soma_AxeBullet_Air.cpp" />
+    <ClCompile Include="Soma_AxeBullet_Ground.cpp" />
+    <ClCompile Include="Soma_DoubleJump.cpp" />
+    <ClCompile Include="Soma_Strike_Air.cpp" />
+    <ClCompile Include="Soma_Sword_Supper_Attack.cpp" />
+    <ClCompile Include="Sword_Attack3.cpp" />
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
+    <PostBuildEvent>
+      <Command>if exist "..\ThirdParty\FFmpeg\bin\x64\*.dll" xcopy /Y /D /R /Q "..\ThirdParty\FFmpeg\bin\x64\*.dll" "$(OutDir)"
+if exist "..\ThirdParty\FreeImage\bin\x64\*.dll" xcopy /Y /D /R /Q "..\ThirdParty\FreeImage\bin\x64\*.dll" "$(OutDir)"
+if exist "..\ThirdParty\bassSDK\bin\x64\*.dll" xcopy /Y /D /R /Q "..\ThirdParty\bassSDK\bin\x64\*.dll" "$(OutDir)"</Command>
+      <Message>Copying ThirdParty DLLs (FFmpeg / FreeImage / bass) to output directory...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
+    <PostBuildEvent>
+      <Command>if exist "..\ThirdParty\FFmpeg\bin\x86\*.dll" xcopy /Y /D /R /Q "..\ThirdParty\FFmpeg\bin\x86\*.dll" "$(OutDir)"
+if exist "..\ThirdParty\FreeImage\bin\x86\*.dll" xcopy /Y /D /R /Q "..\ThirdParty\FreeImage\bin\x86\*.dll" "$(OutDir)"
+if exist "..\ThirdParty\bassSDK\bin\x86\*.dll" xcopy /Y /D /R /Q "..\ThirdParty\bassSDK\bin\x86\*.dll" "$(OutDir)"</Command>
+      <Message>Copying ThirdParty DLLs (FFmpeg / FreeImage / bass) to output directory...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

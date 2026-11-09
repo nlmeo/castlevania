@@ -1,0 +1,17 @@
+.vs/
+/Debug/
+/Release/
+/x64/
+/x86/
+/D2DGameFramework/Debug/
+/D2DGameFramework/Release/
+/D2DGameFramework/x64/
+/D2DGameFramework/x86/
+artifacts/
+/*-verification.log
+*.vcxproj.user
+*.suo
+*.obj
+*.pdb
+*.ilk
+*.tlog

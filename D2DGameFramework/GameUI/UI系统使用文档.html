@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D2DGameFramework UI 系统使用文档</title>
+<style>
+:root {
+  --bg: #1a1a2e;
+  --surface: #16213e;
+  --border: #0f3460;
+  --text: #e0e0e0;
+  --heading: #e94560;
+  --link: #53a8b6;
+  --code-bg: #0d1117;
+  --inline-code-bg: #2d2d44;
+  --table-head: #0f3460;
+  --table-stripe: #1a2940;
+  --highlight: #e94560;
+  --accent: #f5c542;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  padding: 20px;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 50px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+h1 {
+  text-align: center;
+  font-size: 2.2em;
+  color: var(--highlight);
+  border-bottom: 2px solid var(--highlight);
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+}
+h2 {
+  font-size: 1.5em;
+  color: var(--highlight);
+  margin-top: 40px;
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 4px solid var(--highlight);
+}
+h3 {
+  font-size: 1.15em;
+  color: var(--accent);
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+p { margin-bottom: 12px; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.92em;
+  background: var(--inline-code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #e6db74;
+}
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 22px;
+  overflow-x: auto;
+  margin: 14px 0;
+  line-height: 1.55;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: #c9d1d9;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 0.95em;
+}
+th, td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+th {
+  background: var(--table-head);
+  color: var(--accent);
+  font-weight: 600;
+}
+tr:nth-child(even) { background: var(--table-stripe); }
+tr:hover { background: rgba(233,69,96,0.08); }
+ul, ol { margin-left: 24px; margin-bottom: 12px; }
+li { margin-bottom: 4px; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+.note {
+  background: rgba(233,69,96,0.1);
+  border: 1px solid rgba(233,69,96,0.3);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 14px 0;
+}
+.note::before { content: "注意："; font-weight: bold; color: var(--highlight); }
+.inheritance {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 22px;
+  margin: 14px 0;
+  font-family: "Consolas", "Courier New", monospace;
+  white-space: pre;
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+.toc {
+  background: rgba(83,168,182,0.08);
+  border: 1px solid rgba(83,168,182,0.3);
+  border-radius: 8px;
+  padding: 18px 24px;
+  margin: 20px 0;
+}
+.toc h3 { margin-top: 0; color: var(--link); }
+.toc ol { margin-left: 20px; }
+.toc li { line-height: 2; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>D2DGameFramework UI 系统使用文档</h1>
+
+<div class="toc">
+<h3>目录</h3>
+<ol>
+  <li><a href="#s1">架构概述</a></li>
+  <li><a href="#s2">UIElement 基类</a></li>
+  <li><a href="#s3">UICanvas - 顶级画布</a></li>
+  <li><a href="#s4">UIButton - 按钮</a></li>
+  <li><a href="#s5">UICheckBox - 复选框</a></li>
+  <li><a href="#s6">UISliderBar - 滑动条</a></li>
+  <li><a href="#s7">UIWindow - 弹窗容器</a></li>
+  <li><a href="#s8">UIScrollView - 滚动视图</a></li>
+  <li><a href="#s9">Scene 集成机制</a></li>
+  <li><a href="#s10">完整使用示例</a></li>
+  <li><a href="#s11">注意事项</a></li>
+</ol>
+</div>
+
+<h2 id="s1">一、架构概述</h2>
+<p>UI 系统位于 <code>GameUI</code> 命名空间下，是一套独立于 <code>GamePlay::Component</code> 组件体系的轻量级 UI 框架。所有 UI 控件继承自 <code>UIElement</code> 基类，形成树形层级结构。</p>
+
+<h3>类继承关系</h3>
+<div class="inheritance">UIElement （基类）
+├── UICanvas      （顶级画布，管理所有UI）
+├── UIButton      （按钮，三状态 Normal/Hover/Pressed）
+├── UICheckBox    （复选框，双状态 Unchecked/Checked）
+├── UISliderBar   （滑动条，值域 0.0~1.0）
+├── UIWindow      （可拖动弹窗，含标题栏）
+└── UIScrollView  （滚动视图，D2D裁剪渲染）</div>
+
+<h3>核心特性</h3>
+<table>
+<tr><th>特性</th><th>说明</th></tr>
+<tr><td>树形层级</td><td>父子嵌套，<code>AddChild</code>/<code>RemoveChild</code> 管理</td></tr>
+<tr><td>锚点系统</td><td>每个 UIElement 可设置锚点，影响子控件相对偏移</td></tr>
+<tr><td>世界矩形</td><td>自动计算屏幕空间矩形 <code>CalcWorldRect()</code>，支持 <code>HitsTest</code></td></tr>
+<tr><td>事件路由</td><td>鼠标/键盘事件自顶向下分发至命中控件</td></tr>
+<tr><td>焦点窗口</td><td>UICanvas 管理模态窗口层级，自动置顶</td></tr>
+</table>
+
+<hr>
+
+<h2 id="s2">二、UIElement 基类</h2>
+<p>所有 UI 控件的基类，提供位置、大小、锚点、父子关系、点击回调等通用功能。</p>
+
+<h3>构造与属性</h3>
+<pre><code>namespace GameUI
+{
+    class UIElement
+    {
+    public:
+        UIElement();                         // 自动分配唯一UID
+        virtual ~UIElement();
+
+        // 位置与大小
+        void SetPosition(const MathType::vec2f& pos);
+        void SetPosition(float x, float y);
+        const MathType::vec2f& GetPosition() const;
+
+        void SetSize(const MathType::vec2f& size);
+        void SetSize(float w, float h);
+        const MathType::vec2f& GetSize() const;
+
+        // 锚点（默认(0,0)左上角）
+        void SetAnchor(const MathType::vec2f& anchor);
+
+        // 世界矩形（自动计算含父级偏移）
+        MathType::RectF GetWorldRect() const;
+        MathType::RectF GetSelfRect() const;
+        virtual void CalcWorldRect();
+
+        // 可见性
+        bool IsActive() const;
+        void SetActive(bool active);
+        bool IsVisible();
+
+        // 层级管理
+        virtual bool AddChild(UIElement* child);
+        virtual bool RemoveChild(UIElement* child);
+        virtual void RemoveAllChildren();
+        UIElement* GetChild(unsigned int uid);
+
+        // 命中测试
+        bool HitsTest(int x, int y) const;
+
+        // 点击回调
+        void SetOnClick(std::function&lt;void()&gt; callback);
+
+        // 事件响应（子类重写）
+        virtual void OnMouseDown(int x, int y);
+        virtual void OnMouseUp(int x, int y);
+        virtual void OnMouseMove(int x, int y);
+        virtual void OnMouseWheel(int delta);
+        virtual void OnKeyDown(WPARAM key);
+        virtual void OnKeyUp(WPARAM key);
+
+        // 获取信息
+        UIElementType GetType() const;
+        unsigned int GetUID() const;
+        UIElement* GetParent() const;
+        const std::vector&lt;std::unique_ptr&lt;UIElement&gt;&gt;& GetChildren() const;
+    };
+}</code></pre>
+
+<h3>UIElementType 枚举</h3>
+<pre><code>typedef enum class emUIElementType {
+    UI_Base,       // 基类
+    UI_Button,     // 按钮
+    UI_CheckBox,   // 复选框
+    UI_SliderBar,  // 滑动条
+    UI_Window,     // 窗口
+    UI_Canvas,     // 画布
+    UI_ScollView   // 滚动视图
+} UIElementType;</code></pre>
+
+<hr>
+
+<h2 id="s3">三、UICanvas - 顶级画布</h2>
+<p><code>UICanvas</code> 是 UI 系统的顶层容器，每个 <code>Scene</code> 自动持有一个 <code>UICanvas</code> 实例。负责管理所有子控件和子窗口，分发输入事件。</p>
+
+<h3>生命周期</h3>
+<pre><code>// 创建时调用 Initialize 设置画布尺寸
+bool Initialize(int screenWidth, int screenHeight);
+
+// 窗口缩放时调用 Resize
+void Resize(int screenWidth, int screenHeight);</code></pre>
+
+<h3>子控件管理</h3>
+<pre><code>// 添加子控件
+virtual bool AddChild(UIElement* child) override;
+
+// 移除子控件
+virtual bool RemoveChild(UIElement* child) override;
+
+// 移除所有子控件（含子窗口）
+virtual void RemoveAllChildren() override;</code></pre>
+
+<h3>与 Scene 的集成（自动处理，无需手动调用）</h3>
+<pre><code>// Scene 构造时自动创建 UICanvas
+Scene::Scene() : m_isActive(false), mUICanvas(nullptr)
+{
+    InitializeUICanvas(App.GetWidth(), App.GetHeight());
+}
+
+// 获取当前场景的 UI 画布
+UICanvas* canvas = scene-&gt;GetUICanvas();
+
+// 渲染 UI（GameLoop 每帧自动调用）
+scene-&gt;RenderUICanvas();  // 等价于 canvas-&gt;Update() + canvas-&gt;Render()</code></pre>
+
+<hr>
+
+<h2 id="s4">四、UIButton - 按钮</h2>
+<p>支持纹理模式和纯色模式的三状态按钮（Normal / Hover / Pressed）。</p>
+
+<h3>纹理模式</h3>
+<p>纹理贴图为一张 3 倍宽度横向拼接的图片，从左到右依次为 Normal、Hover、Pressed 状态。</p>
+<pre><code>// 加载纹理
+auto* texture = TextureMgr.Load(L"res\\ui\\button.bmp");
+
+// 创建按钮（纹理模式）
+auto* button = new GameUI::UIButton();
+button-&gt;CreateWithTexture(x, y, width, height, texture);
+button-&gt;SetOnClick([&amp;]() {
+    // 点击处理
+});
+canvas-&gt;AddChild(button);</code></pre>
+
+<h3>纯色模式</h3>
+<pre><code>auto* button = new GameUI::UIButton();
+button-&gt;CreateWithColor(
+    x, y, width, height,
+    ColorType::COLORF(0.2f, 0.6f, 1.0f, 1.0f),  // Normal 颜色
+    ColorType::COLORF(0.3f, 0.7f, 1.0f, 1.0f),  // Hover 颜色
+    ColorType::COLORF(0.1f, 0.4f, 0.8f, 1.0f),  // Pressed 颜色
+    4.0f   // 圆角半径
+);</code></pre>
+
+<h3>设置文本</h3>
+<pre><code>// 参数：文本内容，字体名称，字号
+button-&gt;SetText("开始游戏", L"Arial", 24.0f);</code></pre>
+
+<h3>API 摘要</h3>
+<table>
+<tr><th>方法</th><th>说明</th></tr>
+<tr><td><code>CreateWithTexture(x, y, w, h, tex)</code></td><td>纹理模式创建</td></tr>
+<tr><td><code>CreateWithColor(x, y, w, h, normal, hover, pressed, radius)</code></td><td>纯色模式创建</td></tr>
+<tr><td><code>SetText(text, fontName, fontSize)</code></td><td>设置按钮文字</td></tr>
+<tr><td><code>SetOnClick(callback)</code></td><td>设置点击回调（继承自 UIElement）</td></tr>
+</table>
+
+<hr>
+
+<h2 id="s5">五、UICheckBox - 复选框</h2>
+<p>双状态勾选框，纹理为 2 倍宽度横向拼接（左=未选中，右=已选中）。</p>
+
+<pre><code>// 加载复选框纹理（2倍宽度横向拼接）
+auto* texture = TextureMgr.Load(L"res\\ui\\checkbox.bmp");
+
+auto* checkBox = new GameUI::UICheckBox();
+checkBox-&gt;Create(x, y, width, height, texture, false);  // false=初始未选中
+checkBox-&gt;SetOnCheckedChanged([&amp;](bool checked) {
+    if (checked) {
+        // 已选中
+    } else {
+        // 未选中
+    }
+});
+canvas-&gt;AddChild(checkBox);</code></pre>
+
+<h3>API 摘要</h3>
+<table>
+<tr><th>方法</th><th>说明</th></tr>
+<tr><td><code>Create(x, y, w, h, texture, checked)</code></td><td>创建复选框，checked 为初始状态</td></tr>
+<tr><td><code>IsChecked()</code></td><td>获取当前选中状态</td></tr>
+<tr><td><code>SetChecked(bool)</code></td><td>设置选中状态</td></tr>
+<tr><td><code>SetOnCheckedChanged(callback)</code></td><td>状态改变回调，参数为新的选中状态</td></tr>
+</table>
+
+<hr>
+
+<h2 id="s6">六、UISliderBar - 滑动条</h2>
+<p>支持纹理模式和纯色模式，值域 0.0~1.0，由背景条、填充条和滑块三部分组成。</p>
+
+<h3>纹理模式</h3>
+<pre><code>auto* backTex = TextureMgr.Load(L"res\\ui\\slider_bg.bmp");
+auto* coverTex = TextureMgr.Load(L"res\\ui\\slider_fill.bmp");
+auto* handleTex = TextureMgr.Load(L"res\\ui\\slider_handle.bmp");
+
+auto* slider = new GameUI::UISliderBar();
+slider-&gt;CreateWithTexture(x, y, width, height, backTex, coverTex, handleTex, 0.5f);
+slider-&gt;SetOnValueChanged([&amp;](float value) {
+    // value 范围 0.0~1.0
+});
+canvas-&gt;AddChild(slider);</code></pre>
+
+<h3>纯色模式</h3>
+<pre><code>auto* slider = new GameUI::UISliderBar();
+slider-&gt;CreateWithColor(
+    x, y, width, height,
+    16.0f,                                         // handleWidth 滑块宽度
+    ColorType::COLORF(0.3f, 0.3f, 0.3f, 1.0f),    // 背景色
+    ColorType::COLORF(0.2f, 0.6f, 1.0f, 1.0f),    // 填充色
+    ColorType::COLORF(1.0f, 1.0f, 1.0f, 1.0f),    // 滑块色
+    0.0f                                            // 初始值
+);</code></pre>
+
+<h3>API 摘要</h3>
+<table>
+<tr><th>方法</th><th>说明</th></tr>
+<tr><td><code>CreateWithTexture(x, y, w, h, bg, cover, handle, value)</code></td><td>纹理模式创建</td></tr>
+<tr><td><code>CreateWithColor(x, y, w, h, handleW, backColor, fillColor, handleColor, value)</code></td><td>纯色模式创建</td></tr>
+<tr><td><code>GetValue()</code></td><td>获取当前值 (0.0~1.0)</td></tr>
+<tr><td><code>SetValue(float)</code></td><td>设置当前值</td></tr>
+<tr><td><code>SetOnValueChanged(callback)</code></td><td>值改变回调，参数为当前浮点值</td></tr>
+</table>
+
+<hr>
+
+<h2 id="s7">七、UIWindow - 弹窗容器</h2>
+<p>可拖动、可设置模态的弹窗窗口，支持标题栏、背景纹理/纯色。</p>
+
+<pre><code>auto* window = new GameUI::UIWindow();
+
+// 创建窗口：位置、大小、标题栏高度、是否可拖动、背景纹理
+window-&gt;Create(100.0f, 80.0f, 400.0f, 300.0f, 30.0f, true, nullptr);
+
+// 设置为模态窗口（阻止事件穿透到下层）
+window-&gt;SetModal(true);
+
+// 设置背景色
+window-&gt;SetBackColor(ColorType::COLORF(0.1f, 0.1f, 0.15f, 0.9f));
+
+// 设置标题栏颜色
+window-&gt;SetTitleBarColor(ColorType::COLORF(0.2f, 0.3f, 0.5f, 1.0f));
+
+// 设置边框颜色
+window-&gt;SetBorderColor(ColorType::COLORF(0.4f, 0.5f, 0.8f, 1.0f));
+
+// 向窗口中添加子控件（如关闭按钮）
+auto* closeBtn = new GameUI::UIButton();
+closeBtn-&gt;CreateWithColor(window-&gt;GetSize().x - 60.0f, 2.0f, 50.0f, 24.0f,
+    ColorType::COLORF(0.6f, 0.2f, 0.2f, 1.0f),
+    ColorType::COLORF(0.8f, 0.3f, 0.3f, 1.0f),
+    ColorType::COLORF(0.4f, 0.1f, 0.1f, 1.0f));
+closeBtn-&gt;SetText("X", L"Arial", 16.0f);
+closeBtn-&gt;SetOnClick([window]() {
+    window-&gt;SetActive(false);
+});
+window-&gt;AddChild(closeBtn);
+
+// 添加到画布
+canvas-&gt;AddChild(window);</code></pre>
+
+<h3>API 摘要</h3>
+<table>
+<tr><th>方法</th><th>说明</th></tr>
+<tr><td><code>Create(x, y, w, h, titleH, canMove, bgTex)</code></td><td>创建窗口</td></tr>
+<tr><td><code>SetCanMove(bool)</code></td><td>设置是否可拖动</td></tr>
+<tr><td><code>SetModal(bool)</code></td><td>设置模态（点击事件不穿透）</td></tr>
+<tr><td><code>IsModal()</code></td><td>是否模态</td></tr>
+<tr><td><code>SetBackColor(COLORF)</code></td><td>设置背景色</td></tr>
+<tr><td><code>SetTitleBarColor(COLORF)</code></td><td>设置标题栏颜色</td></tr>
+<tr><td><code>SetBorderColor(COLORF)</code></td><td>设置边框颜色</td></tr>
+<tr><td><code>SetTitleBarHeight(float)</code></td><td>设置标题栏高度</td></tr>
+<tr><td><code>AddChild(UIElement*)</code></td><td>添加子控件（相对于窗口坐标）</td></tr>
+</table>
+
+<hr>
+
+<h2 id="s8">八、UIScrollView - 滚动视图</h2>
+<p>支持鼠标滚轮滚动的内容容器，使用 D2D <code>PushAxisAlignedClip</code> 实现裁剪渲染。</p>
+
+<pre><code>auto* scrollView = new GameUI::UIScrollView();
+
+// 创建：位置、视口大小、内容大小、滚动速度
+scrollView-&gt;Create(50.0f, 50.0f, 300.0f, 200.0f, 300.0f, 500.0f, 20.0f);
+
+// 添加子控件到滚动视图中
+for (int i = 0; i &lt; 20; i++) {
+    auto* item = new GameUI::UIButton();
+    item-&gt;CreateWithColor(0, i * 40.0f, 280.0f, 30.0f,
+        ColorType::COLORF(0.2f, 0.2f, 0.3f, 1.0f),
+        ColorType::COLORF(0.3f, 0.3f, 0.5f, 1.0f),
+        ColorType::COLORF(0.1f, 0.1f, 0.2f, 1.0f));
+    scrollView-&gt;AddChild(item);
+}
+
+canvas-&gt;AddChild(scrollView);</code></pre>
+
+<h3>API 摘要</h3>
+<table>
+<tr><th>方法</th><th>说明</th></tr>
+<tr><td><code>Create(x, y, viewW, viewH, contentW, contentH, speed)</code></td><td>创建滚动视图</td></tr>
+<tr><td><code>GetScrollOffset()</code></td><td>获取当前 Y 方向滚动偏移</td></tr>
+<tr><td><code>SetScrollOffset(float)</code></td><td>设置 Y 方向滚动偏移</td></tr>
+</table>
+
+<hr>
+
+<h2 id="s9">九、Scene 集成机制</h2>
+
+<h3>自动化事件转发</h3>
+<p><code>Scene</code> 基类已内置 UICanvas 支持，鼠标/键盘事件自动转发：</p>
+<table>
+<tr><th>Scene 事件方法</th><th>转发目标</th></tr>
+<tr><td><code>OnMouseDown(MouseButton, int, int)</code></td><td><code>mUICanvas-&gt;OnMouseDown(x, y)</code> （仅左键）</td></tr>
+<tr><td><code>OnMouseUp(MouseButton, int, int)</code></td><td><code>mUICanvas-&gt;OnMouseUp(x, y)</code> （仅左键）</td></tr>
+<tr><td><code>OnMouseMove(int, int)</code></td><td><code>mUICanvas-&gt;OnMouseMove(x, y)</code></td></tr>
+<tr><td><code>OnMouseWheel(int)</code></td><td><code>mUICanvas-&gt;OnMouseWheel(delta)</code></td></tr>
+<tr><td><code>OnKeyDown(WPARAM)</code></td><td><code>mUICanvas-&gt;OnKeyDown(key)</code></td></tr>
+<tr><td><code>OnKeyUp(WPARAM)</code></td><td><code>mUICanvas-&gt;OnKeyUp(key)</code></td></tr>
+</table>
+
+<h3>渲染流程</h3>
+<p>在 <code>GameLoop.cpp</code> 中每帧自动调用：</p>
+<pre><code>// 每帧渲染循环中
+SceneMgr.Render(m_TimeDelta);                       // 游戏场景渲染
+SceneMgr.GetCurrentScene()-&gt;RenderUICanvas();       // UI层渲染（Update + Render）</code></pre>
+
+<h3>窗口缩放响应</h3>
+<p><code>Application::_OnSizeChange()</code> 中自动通知：</p>
+<pre><code>auto* curScene = SceneMgr.GetCurrentScene();
+if (curScene &amp;&amp; curScene-&gt;GetUICanvas()) {
+    curScene-&gt;GetUICanvas()-&gt;Resize(newWidth, newHeight);
+}</code></pre>
+
+<h3>子类场景中使用 UI</h3>
+<pre><code>void S0::OnEnter()
+{
+    // 获取画布
+    auto* canvas = GetUICanvas();
+    if (!canvas) return;
+
+    // 创建按钮
+    auto* startBtn = new GameUI::UIButton();
+    startBtn-&gt;CreateWithColor(300, 200, 200, 50,
+        ColorType::COLORF(0.2f, 0.6f, 0.2f, 1.0f),
+        ColorType::COLORF(0.3f, 0.8f, 0.3f, 1.0f),
+        ColorType::COLORF(0.1f, 0.4f, 0.1f, 1.0f));
+    startBtn-&gt;SetText("开始游戏", L"SimSun", 24.0f);
+    startBtn-&gt;SetOnClick([&amp;]() {
+        SceneMgr.SwitchScene("S1");
+    });
+    canvas-&gt;AddChild(startBtn);
+}</code></pre>
+
+<hr>
+
+<h2 id="s10">十、完整使用示例</h2>
+
+<pre><code>#include "GameCore/Scene.h"
+#include "GameUI/UICanvas.h"
+#include "GameUI/UIButton.h"
+#include "GameUI/UICheckBox.h"
+#include "GameUI/UISliderBar.h"
+#include "GameUI/UIWindow.h"
+#include "GameUI/UIScrollView.h"
+#include "D2DCore/TextureManager.h"
+
+class SettingsScene : public GameCore::Scene
+{
+public:
+    void OnEnter() override
+    {
+        auto* canvas = GetUICanvas();
+        if (!canvas) return;
+
+        // 1. 创建标题按钮
+        mTitleBtn = new GameUI::UIButton();
+        mTitleBtn-&gt;CreateWithColor(250, 20, 300, 40,
+            ColorType::COLORF(0.1f, 0.1f, 0.2f, 1.0f),
+            ColorType::COLORF(0.1f, 0.1f, 0.2f, 1.0f),
+            ColorType::COLORF(0.1f, 0.1f, 0.2f, 1.0f));
+        mTitleBtn-&gt;SetText("游戏设置", L"SimHei", 28.0f);
+        canvas-&gt;AddChild(mTitleBtn);
+
+        // 2. 音量滑动条
+        mMusicSlider = new GameUI::UISliderBar();
+        mMusicSlider-&gt;CreateWithColor(250, 100, 300, 20, 16.0f,
+            ColorType::COLORF(0.2f, 0.2f, 0.2f, 1.0f),
+            ColorType::COLORF(0.2f, 0.6f, 0.2f, 1.0f),
+            ColorType::COLORF(1.0f, 1.0f, 1.0f, 1.0f),
+            0.8f);
+        mMusicSlider-&gt;SetOnValueChanged([&amp;](float val) {
+            AudioLib.SetVolume("BGM", val);
+        });
+        canvas-&gt;AddChild(mMusicSlider);
+
+        // 3. 返回按钮
+        mBackBtn = new GameUI::UIButton();
+        mBackBtn-&gt;CreateWithColor(300, 500, 200, 45,
+            ColorType::COLORF(0.6f, 0.2f, 0.2f, 1.0f),
+            ColorType::COLORF(0.8f, 0.3f, 0.3f, 1.0f),
+            ColorType::COLORF(0.4f, 0.1f, 0.1f, 1.0f));
+        mBackBtn-&gt;SetText("返回主菜单", L"SimSun", 20.0f);
+        mBackBtn-&gt;SetOnClick([&amp;]() {
+            SceneMgr.SwitchScene("StartScene");
+        });
+        canvas-&gt;AddChild(mBackBtn);
+
+        // 4. 弹窗示例（帮助窗口）
+        mHelpWindow = new GameUI::UIWindow();
+        mHelpWindow-&gt;Create(150, 100, 500, 350, 30, true, nullptr);
+        mHelpWindow-&gt;SetModal(true);
+        mHelpWindow-&gt;SetBackColor(ColorType::COLORF(0.1f, 0.1f, 0.15f, 0.95f));
+        mHelpWindow-&gt;SetTitleBarColor(ColorType::COLORF(0.2f, 0.4f, 0.6f, 1.0f));
+        mHelpWindow-&gt;SetActive(false);  // 默认隐藏
+        canvas-&gt;AddChild(mHelpWindow);
+    }
+
+private:
+    GameUI::UIButton* mTitleBtn = nullptr;
+    GameUI::UISliderBar* mMusicSlider = nullptr;
+    GameUI::UIButton* mBackBtn = nullptr;
+    GameUI::UIWindow* mHelpWindow = nullptr;
+};</code></pre>
+
+<h2 id="s10b">十、实战案例</h2>
+
+<h3>案例一：主菜单界面</h3>
+<p>游戏启动时的标题画面，包含游戏 Logo 和开始、加载、退出按钮。</p>
+<pre><code>#include "GameCore/Scene.h"
+#include "GameUI/UIButton.h"
+#include "D2DCore/TextureManager.h"
+
+/** @brief 主菜单场景 */
+class TitleScene : public GameCore::Scene
+{
+public:
+    void OnEnter() override
+    {
+        auto* canvas = GetUICanvas();
+        if (!canvas) return;
+
+        // ---------- 加载标题 Logo 纹理 ----------
+        auto* logoTex = TextureMgr.Load(L"res\\ui\\title_logo.bmp");
+        auto* logo = new GameUI::UIButton();
+        logo-&gt;CreateWithTexture(200, 50, 400, 120, logoTex);
+        logo-&gt;SetOnClick(nullptr);  // 仅展示，不可交互
+        canvas-&gt;AddChild(logo);
+
+        // ---------- "开始游戏" 按钮 ----------
+        auto* startBtn = new GameUI::UIButton();
+        startBtn-&gt;CreateWithColor(
+            250, 220, 300, 50,
+            ColorType::COLORF(0.15f, 0.5f, 0.15f, 1.0f),
+            ColorType::COLORF(0.2f, 0.7f, 0.2f, 1.0f),
+            ColorType::COLORF(0.1f, 0.3f, 0.1f, 1.0f),
+            6.0f);
+        startBtn-&gt;SetText("开始游戏", L"SimHei", 26.0f);
+        startBtn-&gt;SetOnClick([&amp;]() {
+            SceneMgr.SwitchScene("S0");
+        });
+        canvas-&gt;AddChild(startBtn);
+
+        // ---------- "继续游戏" 按钮 ----------
+        auto* loadBtn = new GameUI::UIButton();
+        loadBtn-&gt;CreateWithColor(
+            250, 290, 300, 50,
+            ColorType::COLORF(0.15f, 0.4f, 0.5f, 1.0f),
+            ColorType::COLORF(0.2f, 0.6f, 0.7f, 1.0f),
+            ColorType::COLORF(0.1f, 0.2f, 0.3f, 1.0f),
+            6.0f);
+        loadBtn-&gt;SetText("继续游戏", L"SimHei", 26.0f);
+        loadBtn-&gt;SetOnClick([&amp;]() {
+            // GameSave::LoadAndEnter();
+        });
+        canvas-&gt;AddChild(loadBtn);
+
+        // ---------- "退出游戏" 按钮 ----------
+        auto* exitBtn = new GameUI::UIButton();
+        exitBtn-&gt;CreateWithColor(
+            250, 360, 300, 50,
+            ColorType::COLORF(0.5f, 0.15f, 0.15f, 1.0f),
+            ColorType::COLORF(0.7f, 0.2f, 0.2f, 1.0f),
+            ColorType::COLORF(0.3f, 0.1f, 0.1f, 1.0f),
+            6.0f);
+        exitBtn-&gt;SetText("退出游戏", L"SimHei", 26.0f);
+        exitBtn-&gt;SetOnClick([&amp;]() {
+            PostQuitMessage(0);
+        });
+        canvas-&gt;AddChild(exitBtn);
+    }
+};</code></pre>
+
+<h3>案例二：游戏内 HUD（血条 + 魔法条）</h3>
+<p>游戏中常驻显示的角色状态栏，使用纯色 UISliderBar 模拟血条和魔法条。</p>
+<pre><code>/** @brief 在游戏场景 OnEnter 中创建HUD */
+void GameLevelScene::CreateHUD()
+{
+    auto* canvas = GetUICanvas();
+    if (!canvas) return;
+
+    // ---------- 生命值血条（红色） ----------
+    mHPBar = new GameUI::UISliderBar();
+    mHPBar-&gt;CreateWithColor(
+        20, 20, 200, 18, 0,  // handleWidth=0 隐藏滑块，仅显示填充
+        ColorType::COLORF(0.1f, 0.1f, 0.1f, 0.7f),   // 背景（深灰半透明）
+        ColorType::COLORF(0.8f, 0.1f, 0.1f, 0.9f),   // 填充（红色）
+        ColorType::COLORF(0, 0, 0, 0),                // 滑块（透明，不显示）
+        1.0f);                                         // 满血
+    canvas-&gt;AddChild(mHPBar);
+
+    // ---------- 魔法值条（蓝色） ----------
+    mMPBar = new GameUI::UISliderBar();
+    mMPBar-&gt;CreateWithColor(
+        20, 44, 200, 14, 0,
+        ColorType::COLORF(0.1f, 0.1f, 0.1f, 0.7f),
+        ColorType::COLORF(0.1f, 0.3f, 0.8f, 0.9f),
+        ColorType::COLORF(0, 0, 0, 0),
+        1.0f);
+    canvas-&gt;AddChild(mMPBar);
+
+    // ---------- HP 文字标签 ----------
+    mHPLabel = new GameUI::UIButton();
+    mHPLabel-&gt;CreateWithColor(
+        20, 6, 200, 14,
+        ColorType::COLORF(0, 0, 0, 0),  // 全透明背景
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0));
+    mHPLabel-&gt;SetText("HP: 100/100", L"Arial", 13.0f);
+    canvas-&gt;AddChild(mHPLabel);
+}
+
+/** @brief 受伤时更新血条 */
+void GameLevelScene::OnPlayerDamaged(float hpPercent)
+{
+    if (mHPBar)
+    {
+        mHPBar-&gt;SetValue(hpPercent);  // 0.0~1.0
+        mHPLabel-&gt;SetText("HP: " + std::to_string((int)(hpPercent * 100)) + "/100",
+                           L"Arial", 13.0f);
+    }
+}</code></pre>
+
+<h3>案例三：暂停菜单</h3>
+<p>按下 ESC 时弹出暂停覆盖层，包含继续、重开、返回主菜单三个选项。</p>
+<pre><code>/** @brief 在场景 Update 中检测 ESC 键切换暂停 */
+void GameLevelScene::Update(float deltaTime)
+{
+    // ... 游戏逻辑 ...
+
+    if (GT::KeyDown(VK_ESCAPE))
+    {
+        if (mIsPaused)
+            ResumeGame();
+        else
+            PauseGame();
+    }
+}
+
+void GameLevelScene::PauseGame()
+{
+    mIsPaused = true;
+    auto* canvas = GetUICanvas();
+    if (!canvas) return;
+
+    // ---------- 半透明遮罩 ----------
+    mPauseOverlay = new GameUI::UIButton();
+    mPauseOverlay-&gt;CreateWithColor(
+        0, 0, 800, 600,
+        ColorType::COLORF(0, 0, 0, 0.5f),
+        ColorType::COLORF(0, 0, 0, 0.5f),
+        ColorType::COLORF(0, 0, 0, 0.5f));
+    canvas-&gt;AddChild(mPauseOverlay);
+
+    // ---------- 暂停标题 ----------
+    auto* title = new GameUI::UIButton();
+    title-&gt;CreateWithColor(250, 120, 300, 50,
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0));
+    title-&gt;SetText("游戏暂停", L"SimHei", 32.0f);
+    canvas-&gt;AddChild(title);
+
+    // ---------- "继续游戏" ----------
+    auto* resumeBtn = _MakeMenuButton(260, 210, "继续游戏");
+    resumeBtn-&gt;SetOnClick([&amp;]() { ResumeGame(); });
+    canvas-&gt;AddChild(resumeBtn);
+
+    // ---------- "重新开始" ----------
+    auto* restartBtn = _MakeMenuButton(260, 280, "重新开始");
+    restartBtn-&gt;SetOnClick([&amp;]() {
+        ResumeGame();
+        SceneMgr.SwitchScene(SceneMgr.GetCurrentSceneName());
+    });
+    canvas-&gt;AddChild(restartBtn);
+
+    // ---------- "返回主菜单" ----------
+    auto* quitBtn = _MakeMenuButton(260, 350, "返回主菜单");
+    quitBtn-&gt;SetOnClick([&amp;]() {
+        ResumeGame();
+        SceneMgr.SwitchScene("TitleScene");
+    });
+    canvas-&gt;AddChild(quitBtn);
+}
+
+void GameLevelScene::ResumeGame()
+{
+    mIsPaused = false;
+    auto* canvas = GetUICanvas();
+    if (canvas)
+        canvas-&gt;RemoveAllChildren();
+    // 重新创建 HUD...
+    CreateHUD();
+}
+
+GameUI::UIButton* GameLevelScene::_MakeMenuButton(float x, float y, const char* text)
+{
+    auto* btn = new GameUI::UIButton();
+    btn-&gt;CreateWithColor(x, y, 280, 45,
+        ColorType::COLORF(0.2f, 0.2f, 0.3f, 0.9f),
+        ColorType::COLORF(0.3f, 0.3f, 0.5f, 0.9f),
+        ColorType::COLORF(0.15f, 0.15f, 0.2f, 0.9f),
+        6.0f);
+    btn-&gt;SetText(text, L"SimSun", 22.0f);
+    return btn;
+}</code></pre>
+
+<h3>案例四：确认对话框</h3>
+<p>模态确认窗口，用于"是否退出"、"是否丢弃物品"等二次确认场景。</p>
+<pre><code>/** @brief 显示确认对话框 */
+void GameLevelScene::ShowConfirmDialog(const char* message,
+                                       std::function&lt;void()&gt; onYes,
+                                       std::function&lt;void()&gt; onNo)
+{
+    auto* canvas = GetUICanvas();
+    if (!canvas) return;
+
+    // ---------- 模态窗口 ----------
+    auto* dialog = new GameUI::UIWindow();
+    dialog-&gt;Create(200, 200, 400, 180, 30, true, nullptr);
+    dialog-&gt;SetModal(true);
+    dialog-&gt;SetBackColor(ColorType::COLORF(0.12f, 0.12f, 0.18f, 0.95f));
+    dialog-&gt;SetTitleBarColor(ColorType::COLORF(0.25f, 0.25f, 0.4f, 1.0f));
+    dialog-&gt;SetBorderColor(ColorType::COLORF(0.4f, 0.4f, 0.6f, 1.0f));
+    canvas-&gt;AddChild(dialog);
+
+    // ---------- 提示文字 ----------
+    auto* msgLabel = new GameUI::UIButton();
+    msgLabel-&gt;CreateWithColor(40, 40, 320, 50,
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0));
+    msgLabel-&gt;SetText(message, L"SimSun", 18.0f);
+    dialog-&gt;AddChild(msgLabel);
+
+    // ---------- "确定" 按钮（红色） ----------
+    auto* yesBtn = new GameUI::UIButton();
+    yesBtn-&gt;CreateWithColor(100, 110, 90, 36,
+        ColorType::COLORF(0.6f, 0.15f, 0.15f, 1.0f),
+        ColorType::COLORF(0.8f, 0.25f, 0.25f, 1.0f),
+        ColorType::COLORF(0.4f, 0.1f, 0.1f, 1.0f),
+        4.0f);
+    yesBtn-&gt;SetText("确定", L"SimSun", 18.0f);
+    yesBtn-&gt;SetOnClick([dialog, canvas, onYes]() {
+        canvas-&gt;RemoveChild(dialog);
+        if (onYes) onYes();
+    });
+    dialog-&gt;AddChild(yesBtn);
+
+    // ---------- "取消" 按钮（灰色） ----------
+    auto* noBtn = new GameUI::UIButton();
+    noBtn-&gt;CreateWithColor(210, 110, 90, 36,
+        ColorType::COLORF(0.3f, 0.3f, 0.3f, 1.0f),
+        ColorType::COLORF(0.45f, 0.45f, 0.45f, 1.0f),
+        ColorType::COLORF(0.2f, 0.2f, 0.2f, 1.0f),
+        4.0f);
+    noBtn-&gt;SetText("取消", L"SimSun", 18.0f);
+    noBtn-&gt;SetOnClick([dialog, canvas, onNo]() {
+        canvas-&gt;RemoveChild(dialog);
+        if (onNo) onNo();
+    });
+    dialog-&gt;AddChild(noBtn);
+}
+
+// ---------- 使用示例 ----------
+void GameLevelScene::OnExitTrigger()
+{
+    ShowConfirmDialog("确定要退出当前关卡吗？",
+        []() { SceneMgr.SwitchScene("TitleScene"); },
+        nullptr);
+}</code></pre>
+
+<h3>案例五：设置面板（音量 + 全屏）</h3>
+<p>组合滑动条和复选框实现典型的设置面板。</p>
+<pre><code>void SettingsScene::OnEnter()
+{
+    auto* canvas = GetUICanvas();
+    if (!canvas) return;
+
+    // ===== 音乐音量 =====
+    auto* musicLabel = new GameUI::UIButton();
+    musicLabel-&gt;CreateWithColor(180, 100, 120, 30,
+        ColorType::COLORF(0, 0, 0, 0), ColorType::COLORF(0, 0, 0, 0), ColorType::COLORF(0, 0, 0, 0));
+    musicLabel-&gt;SetText("音乐音量", L"SimHei", 20.0f);
+    canvas-&gt;AddChild(musicLabel);
+
+    mMusicSlider = new GameUI::UISliderBar();
+    mMusicSlider-&gt;CreateWithColor(310, 100, 250, 22, 16,
+        ColorType::COLORF(0.2f, 0.2f, 0.2f, 1.0f),
+        ColorType::COLORF(0.2f, 0.6f, 0.2f, 1.0f),
+        ColorType::COLORF(1.0f, 1.0f, 1.0f, 1.0f),
+        1.0f);
+    mMusicSlider-&gt;SetOnValueChanged([](float v) {
+        AudioLib.SetVolume("BGM", v);
+    });
+    canvas-&gt;AddChild(mMusicSlider);
+
+    // ===== 音效音量 =====
+    auto* sfxLabel = new GameUI::UIButton();
+    sfxLabel-&gt;CreateWithColor(180, 150, 120, 30,
+        ColorType::COLORF(0, 0, 0, 0), ColorType::COLORF(0, 0, 0, 0), ColorType::COLORF(0, 0, 0, 0));
+    sfxLabel-&gt;SetText("音效音量", L"SimHei", 20.0f);
+    canvas-&gt;AddChild(sfxLabel);
+
+    mSFXSlider = new GameUI::UISliderBar();
+    mSFXSlider-&gt;CreateWithColor(310, 150, 250, 22, 16,
+        ColorType::COLORF(0.2f, 0.2f, 0.2f, 1.0f),
+        ColorType::COLORF(0.2f, 0.5f, 0.8f, 1.0f),
+        ColorType::COLORF(1.0f, 1.0f, 1.0f, 1.0f),
+        0.8f);
+    mSFXSlider-&gt;SetOnValueChanged([](float v) {
+        AudioLib.SetVolume("SFX", v);
+    });
+    canvas-&gt;AddChild(mSFXSlider);
+
+    // ===== 纹理模式下全屏复选框 =====
+    auto* cbTex = TextureMgr.Load(L"res\\ui\\checkbox.bmp");
+    if (cbTex)
+    {
+        mFullScreenCB = new GameUI::UICheckBox();
+        mFullScreenCB-&gt;Create(180, 210, 28, 28, cbTex, false);
+        mFullScreenCB-&gt;SetOnCheckedChanged([&amp;](bool checked) {
+            // App.SetFullScreen(checked);
+        });
+        canvas-&gt;AddChild(mFullScreenCB);
+    }
+
+    auto* fullLabel = new GameUI::UIButton();
+    fullLabel-&gt;CreateWithColor(220, 210, 100, 28,
+        ColorType::COLORF(0, 0, 0, 0), ColorType::COLORF(0, 0, 0, 0), ColorType::COLORF(0, 0, 0, 0));
+    fullLabel-&gt;SetText("全屏模式", L"SimHei", 20.0f);
+    canvas-&gt;AddChild(fullLabel);
+
+    // ===== 返回按钮 =====
+    auto* backBtn = new GameUI::UIButton();
+    backBtn-&gt;CreateWithColor(300, 500, 200, 45,
+        ColorType::COLORF(0.5f, 0.2f, 0.2f, 1.0f),
+        ColorType::COLORF(0.7f, 0.3f, 0.3f, 1.0f),
+        ColorType::COLORF(0.3f, 0.1f, 0.1f, 1.0f),
+        6.0f);
+    backBtn-&gt;SetText("返回", L"SimSun", 22.0f);
+    backBtn-&gt;SetOnClick([&amp;]() { SceneMgr.SwitchScene("TitleScene"); });
+    canvas-&gt;AddChild(backBtn);
+}</code></pre>
+
+<h3>案例六：可滚动物品列表</h3>
+<p>使用 UIScrollView 展示道具/装备选择列表，支持滚轮翻页。</p>
+<pre><code>/** @brief 在UIWindow中创建可滚动背包 */
+void InventoryWindow::BuildItemList(GameUI::UIWindow* window)
+{
+    // ---------- 滚动视图 ----------
+    auto* scrollView = new GameUI::UIScrollView();
+    scrollView-&gt;Create(20, 60, 360, 280, 360, 600, 25.0f);
+    window-&gt;AddChild(scrollView);
+
+    // ---------- 填充物品项 ----------
+    // 假设 mInventoryItems 是物品数据结构数组
+    struct ItemInfo { const char* name; int count; };
+    std::vector&lt;ItemInfo&gt; mInventoryItems = {
+        {"生命药水", 5}, {"魔法药水", 3}, {"解毒药", 1},
+        {"铁剑", 1}, {"皮甲", 1}, {"盾牌", 1},
+        {"回复药", 2}, {"力量戒指", 1}, {"速度之靴", 1},
+        {"火焰之书", 1}, {"冰霜之书", 1}, {"雷电之书", 1},
+    };
+
+    for (size_t i = 0; i &lt; mInventoryItems.size(); i++)
+    {
+        auto* item = new GameUI::UIButton();
+        item-&gt;CreateWithColor(5, i * 48.0f, 350, 40,
+            ColorType::COLORF(0.15f, 0.15f, 0.25f, 1.0f),
+            ColorType::COLORF(0.25f, 0.25f, 0.4f, 1.0f),
+            ColorType::COLORF(0.1f, 0.1f, 0.15f, 1.0f),
+            4.0f);
+
+        // 物品名 + 数量
+        std::string label = std::string(mInventoryItems[i].name)
+                            + " x" + std::to_string(mInventoryItems[i].count);
+        item-&gt;SetText(label, L"SimSun", 16.0f);
+
+        // 点击选中
+        size_t idx = i;
+        item-&gt;SetOnClick([idx]() {
+            // 选中物品逻辑: OnItemSelected(idx);
+        });
+
+        scrollView-&gt;AddChild(item);
+    }
+}</code></pre>
+
+<h3>案例七：底部对话栏</h3>
+<p>模拟 NPC 对话时底部出现的半透明文字区域。</p>
+<pre><code>/** @brief 在场景底部显示对话栏 */
+void GameLevelScene::ShowDialogueBox(const char* speaker,
+                                     const char* text,
+                                     std::function&lt;void()&gt; onComplete)
+{
+    auto* canvas = GetUICanvas();
+    if (!canvas) return;
+
+    // ---------- 底部背景栏 ----------
+    auto* box = new GameUI::UIButton();
+    box-&gt;CreateWithColor(30, 460, 740, 120,
+        ColorType::COLORF(0.05f, 0.05f, 0.12f, 0.85f),
+        ColorType::COLORF(0.05f, 0.05f, 0.12f, 0.85f),
+        ColorType::COLORF(0.05f, 0.05f, 0.12f, 0.85f));
+    canvas-&gt;AddChild(box);
+
+    // ---------- 说话者名字 ----------
+    auto* nameLabel = new GameUI::UIButton();
+    nameLabel-&gt;CreateWithColor(50, 470, 200, 24,
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0));
+    nameLabel-&gt;SetText(speaker, L"SimHei", 18.0f);
+    canvas-&gt;AddChild(nameLabel);
+
+    // ---------- 对话文本 ----------
+    auto* textLabel = new GameUI::UIButton();
+    textLabel-&gt;CreateWithColor(50, 500, 700, 60,
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0));
+    textLabel-&gt;SetText(text, L"SimSun", 16.0f);
+    canvas-&gt;AddChild(textLabel);
+
+    // ---------- 点击任意位置继续 ----------
+    auto* clickArea = new GameUI::UIButton();
+    clickArea-&gt;CreateWithColor(0, 460, 800, 140,
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0),
+        ColorType::COLORF(0, 0, 0, 0));
+    clickArea-&gt;SetOnClick([canvas, box, nameLabel, textLabel, clickArea, onComplete]() {
+        // 移除所有对话相关控件
+        canvas-&gt;RemoveChild(box);
+        canvas-&gt;RemoveChild(nameLabel);
+        canvas-&gt;RemoveChild(textLabel);
+        canvas-&gt;RemoveChild(clickArea);
+        if (onComplete) onComplete();
+    });
+    canvas-&gt;AddChild(clickArea);
+}
+
+// ---------- 使用示例：NPC对话链 ----------
+void GameLevelScene::OnTalkToNPC()
+{
+    ShowDialogueBox("神秘老人",
+        "年轻的冒险者，前方就是恶魔城了...",
+        [&amp;]() {
+            // 第一段对话结束后显示第二段
+            ShowDialogueBox("神秘老人",
+                "带上这把圣剑，它会对你有帮助的。",
+                []() { /* 对话结束，给予道具 */ });
+        });
+}</code></pre>
+
+<hr>
+
+<h2 id="s11">十一、注意事项</h2>
+<ol>
+  <li><strong>内存管理</strong>：<code>UIElement::AddChild</code> 接收裸指针后转由 <code>std::unique_ptr</code> 托管，不要手动 <code>delete</code> 已添加的子控件。</li>
+  <li><strong>渲染顺序</strong>：UI 在游戏场景渲染之后执行（<code>GameLoop.cpp</code> 中 <code>RenderUICanvas()</code> 在 <code>SceneMgr.Render()</code> 之后），确保 UI 显示在最上层。</li>
+  <li><strong>事件优先级</strong>：模态窗口（<code>SetModal(true)</code>）会拦截鼠标事件，阻止穿透到下层控件。</li>
+  <li><strong>纹理加载</strong>：使用 <code>TextureManager::Load()</code> 加载纹理，纹理对象由 TextureManager 管理生命周期。</li>
+  <li><strong>坐标系统</strong>：UI 坐标原点为屏幕左上角，X 轴向右，Y 轴向下。子控件的 <code>SetPosition</code> 相对于父控件位置 + 锚点偏移。</li>
+  <li><strong>场景切换</strong>：切换到新场景时，旧场景的 UICanvas 会被自动销毁，子控件也会被级联释放。</li>
+</ol>
+
+</div>
+</body>
+</html>

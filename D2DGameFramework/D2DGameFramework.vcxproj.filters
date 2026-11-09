@@ -1,0 +1,1134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D2DCore\D2DRender.cpp">
+      <Filter>D2D核心</Filter>
+    </ClCompile>
+    <ClCompile Include="D2DCore\FontRenderer.cpp">
+      <Filter>D2D核心</Filter>
+    </ClCompile>
+    <ClCompile Include="D2DCore\Sprite.cpp">
+      <Filter>D2D核心</Filter>
+    </ClCompile>
+    <ClCompile Include="D2DCore\Texture.cpp">
+      <Filter>D2D核心</Filter>
+    </ClCompile>
+    <ClCompile Include="D2DCore\TextureManager.cpp">
+      <Filter>D2D核心</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCore\Application.cpp">
+      <Filter>游戏核心</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCore\AudioLib.cpp">
+      <Filter>游戏核心</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCore\GameLoop.cpp">
+      <Filter>游戏核心</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCore\InputMgr.cpp">
+      <Filter>游戏核心</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCore\Scene.cpp">
+      <Filter>游戏核心</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCore\SceneManager.cpp">
+      <Filter>游戏核心</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\GameObject.cpp">
+      <Filter>GamePlay框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\Transform2d.cpp">
+      <Filter>GamePlay框架</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpTool\INIConfig.cpp">
+      <Filter>辅助工具</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpTool\MyConsole.cpp">
+      <Filter>辅助工具</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\Camera2d.cpp">
+      <Filter>GamePlay框架\2D摄像机</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="GamePlay\AudioSource.cpp">
+      <Filter>GamePlay框架\组件\音频</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\Component.cpp">
+      <Filter>GamePlay框架\组件</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\Collider2d.cpp">
+      <Filter>GamePlay框架\组件\碰撞组件</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\Debug.cpp">
+      <Filter>GamePlay框架\调试</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\SpriteRender.cpp">
+      <Filter>GamePlay框架\组件\精灵绘制</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\VideoPlayer.cpp">
+      <Filter>GamePlay框架\组件\视频播放</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\Animator.cpp">
+      <Filter>GamePlay框架\组件\动画</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\FiniteStateMachine.cpp">
+      <Filter>GamePlay框架\组件\状态机</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma.cpp">
+      <Filter>游戏内容\角色\英雄</Filter>
+    </ClCompile>
+    <ClCompile Include="SomaStates.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Idle.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTool.cpp">
+      <Filter>GamePlay框架</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>游戏内容\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>游戏内容\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundConfigScene.cpp">
+      <Filter>游戏内容\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectDataScene.cpp">
+      <Filter>游戏内容\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="TopScene.cpp">
+      <Filter>游戏内容\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="S0.cpp">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>游戏内容\障碍</Filter>
+    </ClCompile>
+    <ClCompile Include="S1.cpp">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClCompile>
+    <ClCompile Include="S2.cpp">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClCompile>
+    <ClCompile Include="S3.cpp">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClCompile>
+    <ClCompile Include="S4.cpp">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClCompile>
+    <ClCompile Include="S5.cpp">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClCompile>
+    <ClCompile Include="S6.cpp">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClCompile>
+    <ClCompile Include="Slop.cpp">
+      <Filter>游戏内容\障碍</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>游戏内容\障碍</Filter>
+    </ClCompile>
+    <ClCompile Include="EdgePlatform.cpp">
+      <Filter>游戏内容\障碍</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Walk.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Jump.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Fall.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Crouch.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Dash_Back.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Slide_Flat.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombi.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombi_Alert.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombi_Dead.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombiPart.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombi_Idle.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombi_Patrol.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombiStates.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>游戏内容\角色\敌人\Bat</Filter>
+    </ClCompile>
+    <ClCompile Include="BatStates.cpp">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat_Idle.cpp">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat_Walk.cpp">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat_Dead.cpp">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyStates.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Fly_Idle.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Fly_Attack.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Fly_Dead.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Skill_Air.cpp">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Skill_Ground.cpp">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\AfterImageGhost.cpp">
+      <Filter>GamePlay框架\拖影</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\AfterImageTrail.cpp">
+      <Filter>GamePlay框架\拖影</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackEffect.cpp">
+      <Filter>游戏内容\特效</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombi_Chase.cpp">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Land.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectsPool.cpp">
+      <Filter>游戏内容\特效</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe_Alert.cpp">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeStates.cpp">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe.cpp">
+      <Filter>游戏内容\角色\敌人\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe_Attack.cpp">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe_Chase.cpp">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe_Dead.cpp">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe_Idle.cpp">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe_Patrol.cpp">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClCompile>
+    <ClCompile Include="AxePart.cpp">
+      <Filter>游戏内容\角色\敌人\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeBulletE.cpp">
+      <Filter>游戏内容\角色\敌人\Axe</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Hit_Air.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Hit_Stand.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Fly_Sword.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword</Filter>
+    </ClCompile>
+    <ClCompile Include="Fly.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\self</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordStates.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword_Idle.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword_Aim.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword_Attack.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword_WithDraw.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword_Attack2.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>游戏内容\角色\英雄</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>游戏内容\角色\敌人</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay\HitFlash.cpp">
+      <Filter>GamePlay框架</Filter>
+    </ClCompile>
+    <ClCompile Include="BloodParticle.cpp">
+      <Filter>游戏内容\特效</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIButton.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UICanvas.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UICheckBox.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIElement.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIScrollView.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UISliderBar.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIWindow.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\FloatingNumberPool.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIFloatingNumber.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIImage.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UINumber.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>游戏内容\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIText.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UIAnimator.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\UITextArea.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI\MenuStack.cpp">
+      <Filter>GameUI框架</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipMenu.cpp">
+      <Filter>游戏内容\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemConfig.cpp">
+      <Filter>游戏内容\道具</Filter>
+    </ClCompile>
+    <ClCompile Include="BackPack.cpp">
+      <Filter>游戏内容\背包</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Attack_Air.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Attack_Crouch.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Attack_Stand.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Great_Sword_Attack_Air.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Great_Sword_Attack_Crouch.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Great_Sword_Attack_Stand.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Punch_Air.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Punch_Crouch.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Punch_Stand.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClCompile>
+    <ClCompile Include="S_Fly.cpp">
+      <Filter>游戏内容\角色\英雄\魂技能\蓝魂</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeBulletP.cpp">
+      <Filter>游戏内容\角色\英雄\魂技能\红魂</Filter>
+    </ClCompile>
+    <ClCompile Include="S_BlackPather.cpp">
+      <Filter>游戏内容\角色\英雄\魂技能\蓝魂</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_BlackPanther.cpp">
+      <Filter>游戏内容\角色\英雄\状态\魂技能</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackCollider.cpp">
+      <Filter>GamePlay框架\组件\碰撞组件</Filter>
+    </ClCompile>
+    <ClCompile Include="S_Bat.cpp">
+      <Filter>游戏内容\角色\英雄\魂技能\蓝魂</Filter>
+    </ClCompile>
+    <ClCompile Include="SoulSkill.cpp">
+      <Filter>游戏内容\角色\英雄\魂技能</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>游戏内容\UI\血条</Filter>
+    </ClCompile>
+    <ClCompile Include="BossHP.cpp">
+      <Filter>游戏内容\UI\血条</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Great_Sword_Supper_Attack.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClCompile>
+    <ClCompile Include="BreakableObject.cpp">
+      <Filter>游戏内容\角色\敌人</Filter>
+    </ClCompile>
+    <ClCompile Include="BufferBlock.cpp">
+      <Filter>游戏内容\UI\血条</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>游戏内容\场景</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpTool\Timer.cpp">
+      <Filter>辅助工具</Filter>
+    </ClCompile>
+    <ClCompile Include="Drop.cpp">
+      <Filter>游戏内容\道具</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <Filter>游戏内容\障碍</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect_SuperAttack.cpp">
+      <Filter>游戏内容\特效</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveManager.cpp">
+      <Filter>辅助工具</Filter>
+    </ClCompile>
+    <ClCompile Include="S_Axe.cpp">
+      <Filter>游戏内容\角色\英雄\魂技能\红魂</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_AxeBullet_Air.cpp">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_AxeBullet_Ground.cpp">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_DoubleJump.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Strike_Air.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Sword_Supper_Attack.cpp">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword_Attack3.cpp">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClCompile>
+    <ClCompile Include="Soma_Dead.cpp">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D2DCore\D2DRender.h">
+      <Filter>D2D核心</Filter>
+    </ClInclude>
+    <ClInclude Include="D2DCore\FontRenderer.h">
+      <Filter>D2D核心</Filter>
+    </ClInclude>
+    <ClInclude Include="D2DCore\Sprite.h">
+      <Filter>D2D核心</Filter>
+    </ClInclude>
+    <ClInclude Include="D2DCore\Texture.h">
+      <Filter>D2D核心</Filter>
+    </ClInclude>
+    <ClInclude Include="D2DCore\TextureManager.h">
+      <Filter>D2D核心</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCore\Application.h">
+      <Filter>游戏核心</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCore\AudioLib.h">
+      <Filter>游戏核心</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCore\GameLoop.h">
+      <Filter>游戏核心</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCore\InputMgr.h">
+      <Filter>游戏核心</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCore\Scene.h">
+      <Filter>游戏核心</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCore\SceneManager.h">
+      <Filter>游戏核心</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\GameObject.h">
+      <Filter>GamePlay框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\Transform2d.h">
+      <Filter>GamePlay框架</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpTool\EnCoding.h">
+      <Filter>辅助工具</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpTool\INIConfig.h">
+      <Filter>辅助工具</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpTool\MyConsole.h">
+      <Filter>辅助工具</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpTool\RandomMaker.h">
+      <Filter>辅助工具</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpTool\SingletonTemplate.h">
+      <Filter>辅助工具</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDefine\Color.h">
+      <Filter>类型定义</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDefine\Geometric.h">
+      <Filter>类型定义</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDefine\Matrix3x3.h">
+      <Filter>类型定义</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDefine\Universal.h">
+      <Filter>类型定义</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDefine\Vector2.h">
+      <Filter>类型定义</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDefine\Vector3.h">
+      <Filter>类型定义</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\Camera2d.h">
+      <Filter>GamePlay框架\2D摄像机</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\AudioSource.h">
+      <Filter>GamePlay框架\组件\音频</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\Component.h">
+      <Filter>GamePlay框架\组件</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\Collider2d.h">
+      <Filter>GamePlay框架\组件\碰撞组件</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\Debug.h">
+      <Filter>GamePlay框架\调试</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\SpriteRender.h">
+      <Filter>GamePlay框架\组件\精灵绘制</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\VideoPlayer.h">
+      <Filter>GamePlay框架\组件\视频播放</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\Animator.h">
+      <Filter>GamePlay框架\组件\动画</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\FiniteStateMachine.h">
+      <Filter>GamePlay框架\组件\状态机</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma.h">
+      <Filter>游戏内容\角色\英雄</Filter>
+    </ClInclude>
+    <ClInclude Include="Attributes.h">
+      <Filter>游戏内容\角色\英雄</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>游戏内容\角色\英雄</Filter>
+    </ClInclude>
+    <ClInclude Include="SomaStates.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Idle.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrow.h">
+      <Filter>游戏内容\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Option.h">
+      <Filter>游戏内容\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTool.h">
+      <Filter>GamePlay框架</Filter>
+    </ClInclude>
+    <ClInclude Include="ResHeader.h" />
+    <ClInclude Include="StartScene.h">
+      <Filter>游戏内容\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundConfigScene.h">
+      <Filter>游戏内容\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectDataScene.h">
+      <Filter>游戏内容\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="TopScene.h">
+      <Filter>游戏内容\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="S0.h">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClInclude>
+    <ClInclude Include="AnchorTool.h">
+      <Filter>游戏内容\场景\锚点工具</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>游戏内容\障碍</Filter>
+    </ClInclude>
+    <ClInclude Include="S1.h">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClInclude>
+    <ClInclude Include="S2.h">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClInclude>
+    <ClInclude Include="S3.h">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClInclude>
+    <ClInclude Include="S4.h">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClInclude>
+    <ClInclude Include="S5.h">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClInclude>
+    <ClInclude Include="S6.h">
+      <Filter>游戏内容\场景\LostVillage</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\GameLayer.h">
+      <Filter>GamePlay框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\CollisionMatrix.h">
+      <Filter>GamePlay框架\组件\碰撞组件</Filter>
+    </ClInclude>
+    <ClInclude Include="Slop.h">
+      <Filter>游戏内容\障碍</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>游戏内容\障碍</Filter>
+    </ClInclude>
+    <ClInclude Include="EdgePlatform.h">
+      <Filter>游戏内容\障碍</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Walk.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Jump.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Fall.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Crouch.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Dash_Back.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Slide_Flat.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Skill_Ground.h">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Skill_Air.h">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombi.h">
+      <Filter>游戏内容\角色\敌人\Zombi</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombi_Alert.h">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombi_Dead.h">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombiPart.h">
+      <Filter>游戏内容\角色\敌人\Zombi</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombi_Idle.h">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombi_Patrol.h">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombiStates.h">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>游戏内容\角色\敌人\Bat</Filter>
+    </ClInclude>
+    <ClInclude Include="BatStates.h">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat_Idle.h">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat_Walk.h">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat_Dead.h">
+      <Filter>游戏内容\角色\敌人\Bat\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyStates.h">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Fly_Idle.h">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Fly_Attack.h">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Fly_Dead.h">
+      <Filter>游戏内容\角色\敌人\Fly\self\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\AfterImageGhost.h">
+      <Filter>GamePlay框架\拖影</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\AfterImageTrail.h">
+      <Filter>GamePlay框架\拖影</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackEffect.h">
+      <Filter>游戏内容\特效</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombi_Chase.h">
+      <Filter>游戏内容\角色\敌人\Zombi\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Land.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectsPool.h">
+      <Filter>游戏内容\特效</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeStates.h">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>游戏内容\角色\敌人\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe_Alert.h">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe_Attack.h">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe_Chase.h">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe_Dead.h">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe_Idle.h">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe_Patrol.h">
+      <Filter>游戏内容\角色\敌人\Axe\行为</Filter>
+    </ClInclude>
+    <ClInclude Include="AxePart.h">
+      <Filter>游戏内容\角色\敌人\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeBulletE.h">
+      <Filter>游戏内容\角色\敌人\Axe</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Hit_Stand.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Hit_Air.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Fly_Sword.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword</Filter>
+    </ClInclude>
+    <ClInclude Include="Fly.h">
+      <Filter>游戏内容\角色\敌人\Fly\self</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordStates.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword_Idle.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword_Aim.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword_Attack.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword_WithDraw.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword_Attack2.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>游戏内容\角色\敌人</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\ChildObject.h">
+      <Filter>GamePlay框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay\HitFlash.h">
+      <Filter>GamePlay框架</Filter>
+    </ClInclude>
+    <ClInclude Include="BloodParticle.h">
+      <Filter>游戏内容\特效</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIButton.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UICanvas.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UICheckBox.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIElement.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIScrollView.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UISliderBar.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIWindow.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\FloatingNumberPool.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIFloatingNumber.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIImage.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UINumber.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>游戏内容\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIText.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UIAnimator.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\UITextArea.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipMenu.h">
+      <Filter>游戏内容\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\IMenu.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\MenuStack.h">
+      <Filter>GameUI框架</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>游戏内容\道具</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemConfig.h">
+      <Filter>游戏内容\道具</Filter>
+    </ClInclude>
+    <ClInclude Include="BackPack.h">
+      <Filter>游戏内容\背包</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Attack_Air.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Attack_Crouch.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Attack_Stand.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Great_Sword_Attack_Stand.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Great_Sword_Attack_Air.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Great_Sword_Attack_Crouch.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Punch_Air.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Punch_Crouch.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Punch_Stand.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClInclude>
+    <ClInclude Include="S_Fly.h">
+      <Filter>游戏内容\角色\英雄\魂技能\蓝魂</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeBulletP.h">
+      <Filter>游戏内容\角色\英雄\魂技能\红魂</Filter>
+    </ClInclude>
+    <ClInclude Include="S_BlackPather.h">
+      <Filter>游戏内容\角色\英雄\魂技能\蓝魂</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_BlackPanther.h">
+      <Filter>游戏内容\角色\英雄\状态\魂技能</Filter>
+    </ClInclude>
+    <ClInclude Include="SoulState.h">
+      <Filter>游戏内容\角色\英雄\状态\魂技能</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackCollider.h">
+      <Filter>GamePlay框架\组件\碰撞组件</Filter>
+    </ClInclude>
+    <ClInclude Include="S_Bat.h">
+      <Filter>游戏内容\角色\英雄\魂技能\蓝魂</Filter>
+    </ClInclude>
+    <ClInclude Include="SoulSkill.h">
+      <Filter>游戏内容\角色\英雄\魂技能</Filter>
+    </ClInclude>
+    <ClInclude Include="BossHP.h">
+      <Filter>游戏内容\UI\血条</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>游戏内容\UI\血条</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Great_Sword_Supper_Attack.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\大剑</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakableObject.h">
+      <Filter>游戏内容\角色\敌人</Filter>
+    </ClInclude>
+    <ClInclude Include="BufferBlock.h">
+      <Filter>游戏内容\UI\血条</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderManager.h">
+      <Filter>GamePlay框架\组件\碰撞组件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>游戏内容\场景</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpTool\Timer.h">
+      <Filter>辅助工具</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop.h">
+      <Filter>游戏内容\道具</Filter>
+    </ClInclude>
+    <ClInclude Include="Rock.h">
+      <Filter>游戏内容\障碍</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect_SuperAttack.h">
+      <Filter>游戏内容\特效</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveManager.h">
+      <Filter>辅助工具</Filter>
+    </ClInclude>
+    <ClInclude Include="S_Axe.h">
+      <Filter>游戏内容\角色\英雄\魂技能\红魂</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_AxeBullet_Air.h">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_AxeBullet_Ground.h">
+      <Filter>游戏内容\角色\英雄\状态\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_DoubleJump.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Strike_Air.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\空手</Filter>
+    </ClInclude>
+    <ClInclude Include="Soma_Sword_Supper_Attack.h">
+      <Filter>游戏内容\角色\英雄\状态\攻击行为\太刀</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword_Attack3.h">
+      <Filter>游戏内容\角色\敌人\Fly\sword\状态</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI\ResourceBar.h" />
+    <ClInclude Include="Soma_Dead.h">
+      <Filter>游戏内容\角色\英雄\状态</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="类型定义">
+      <UniqueIdentifier>{75f60bf9-8186-4adf-b4fd-b156833b1f8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="辅助工具">
+      <UniqueIdentifier>{86bc7461-f107-448f-bf94-3d7ed3fb1f40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架">
+      <UniqueIdentifier>{556036f5-a72e-40fa-9a52-9797949b706e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏核心">
+      <UniqueIdentifier>{f2ea2428-9a36-4619-b5ff-2910b813a0eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="D2D核心">
+      <UniqueIdentifier>{98ec5c0c-81da-4db8-9d1a-bb4a41bb1f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容">
+      <UniqueIdentifier>{c546f9ee-6b26-4eba-91bb-20a5a8770757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\组件">
+      <UniqueIdentifier>{5739fdf6-7431-4c36-885b-f4ae0f1e3dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\2D摄像机">
+      <UniqueIdentifier>{1eae564e-c71c-49ac-96de-df5091283232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\组件\音频">
+      <UniqueIdentifier>{51105c63-687a-448e-a0e8-9a5cd9ce6e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\组件\碰撞组件">
+      <UniqueIdentifier>{d97c0a31-868d-4a0f-8ce5-41dab2aa0e1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\调试">
+      <UniqueIdentifier>{a937077c-e159-41c7-a53c-d9a3b6ec8dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\组件\精灵绘制">
+      <UniqueIdentifier>{1bd60334-2700-4903-84c7-af0104c9cbda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\组件\视频播放">
+      <UniqueIdentifier>{6e845e33-e256-4b17-8132-d44fde0d9cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\组件\动画">
+      <UniqueIdentifier>{7995bd6b-66b8-46a8-a89a-fe9136ef12a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\障碍">
+      <UniqueIdentifier>{eeff6ef0-bfe9-4d8a-b838-cdde06fd67e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\特效">
+      <UniqueIdentifier>{ab88afb9-2337-4d5b-a89f-e99fd680e442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\背包">
+      <UniqueIdentifier>{692ff4ce-387c-4063-81a9-cb0a86c311a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色">
+      <UniqueIdentifier>{a1b05d22-c519-437b-9588-e94c13303331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人">
+      <UniqueIdentifier>{8336d845-a6d7-435a-93cb-bf689ae461e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄">
+      <UniqueIdentifier>{28a6451f-d4da-4de0-8f39-6e6486cac2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\工具">
+      <UniqueIdentifier>{05ba59c0-5afd-4549-a1ac-ff008a363411}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\组件\状态机">
+      <UniqueIdentifier>{0c8b00d5-4a0d-4798-bdc1-d67fde758a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\状态">
+      <UniqueIdentifier>{252f8f3d-f955-4615-bedc-82cdc6816b6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\UI">
+      <UniqueIdentifier>{f2828350-01e9-48b1-99c1-157ee5266bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\场景">
+      <UniqueIdentifier>{88f4d0fc-be34-41e0-96fa-a2017ad59a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\场景\LostVillage">
+      <UniqueIdentifier>{42200cf9-979a-4c43-9702-0756241508be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\场景\锚点工具">
+      <UniqueIdentifier>{21b3f1bf-fe91-4961-8321-38e85f2488d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\状态\攻击行为">
+      <UniqueIdentifier>{74baabdc-ab23-45b3-909b-a83ca6659836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\状态\技能">
+      <UniqueIdentifier>{5317b702-8928-4af3-ad9b-73ffb3b9c973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Zombi">
+      <UniqueIdentifier>{08ecb4d3-e4cd-421c-a389-1a0984a2b183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Zombi\状态">
+      <UniqueIdentifier>{a7c71625-fada-4986-871f-555b3069fecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Axe">
+      <UniqueIdentifier>{81c12548-868a-47d8-adaf-a9b7fa389a8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Axe\行为">
+      <UniqueIdentifier>{d1d88fc8-ab91-4b7c-8252-b0b4293eaa17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Bat">
+      <UniqueIdentifier>{9828eab0-bb3c-49ea-afb9-f9f9f86541fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Bat\状态">
+      <UniqueIdentifier>{614cf5c9-9acc-4b51-a917-134ac1112ab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Fly">
+      <UniqueIdentifier>{5631bea0-e8c0-4f7a-a467-86929b2653a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GamePlay框架\拖影">
+      <UniqueIdentifier>{dd21afae-a460-4400-b8dd-e1921162e70c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Fly\sword">
+      <UniqueIdentifier>{bbcdfae8-1fd6-42af-8099-8dcd62422ac7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Fly\self">
+      <UniqueIdentifier>{630ef0ae-2344-4bc1-9833-be12d4e68e65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Fly\self\状态">
+      <UniqueIdentifier>{21b4367e-621b-4dae-a096-ce7ba7ccd780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\敌人\Fly\sword\状态">
+      <UniqueIdentifier>{c75ec3e9-42aa-47b3-be30-48e5c839634d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\魂技能">
+      <UniqueIdentifier>{199d122c-ba5a-4d53-9548-2d6bb1e566e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameUI框架">
+      <UniqueIdentifier>{c8e86f2a-eda6-4f24-920a-cc489215d4e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\道具">
+      <UniqueIdentifier>{c374bc69-2475-4589-aa8c-b3b306f9df38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\状态\攻击行为\太刀">
+      <UniqueIdentifier>{070b6fe8-dfd4-49ea-9874-ec329c36da06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\状态\攻击行为\大剑">
+      <UniqueIdentifier>{83ed856e-324e-4d6e-9dcf-f40deef6495c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\状态\攻击行为\空手">
+      <UniqueIdentifier>{ba1f9388-6dc7-4d4e-940e-34ae14cd0739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\魂技能\蓝魂">
+      <UniqueIdentifier>{ff18258d-bd97-4f01-9e49-6dc62728535b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\魂技能\红魂">
+      <UniqueIdentifier>{2b095da0-6895-4b52-9dbe-3f55941d349b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\角色\英雄\状态\魂技能">
+      <UniqueIdentifier>{ef5497d5-d582-47e8-a631-46a886fe3df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="游戏内容\UI\血条">
+      <UniqueIdentifier>{b7afeeb1-96a6-439a-8dea-0445c6d35d78}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
