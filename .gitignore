@@ -15,3 +15,33 @@ artifacts/
 *.pdb
 *.ilk
 *.tlog
+
+# Generated files and local runtime data
+*.log
+*.tmp
+*.temp
+*.bak
+*.pch
+*.ipch
+*.idb
+*.iobj
+*.ipdb
+*.lastbuildstate
+*.VC.db
+*.VC.opendb
+__pycache__/
+*.pyc
+/D2DGameFramework/save/
+/save/
+
+# Local AI instructions and assistant configuration
+.codex/
+.agents/
+.claude/
+.cursor/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.cursorrules
+.github/copilot-instructions.md
+.aider*
